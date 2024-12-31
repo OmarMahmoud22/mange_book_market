@@ -1,0 +1,53 @@
+
+{% load static %}
+
+{% block co %}
+
+
+<!-- details.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ book.title }} - Book Details</title>
+    <link rel="stylesheet" href="{% static 'dist/details.css' %}">
+</head>
+<body dir="rtl" class="hold-transition sidebar-mini">
+    <div style="direction: rtl;" class="wrapper">
+        <div class="content-wrapper">
+
+    {% if book.photo_book %}
+    <div class="book-details-container">
+        <div style ="background: url({{book.photo_book.url}});  background-size: cover;  background-position: center;" class="widget-user-header ">
+            {% else %}  
+            <div class="widget-user-header bg-info">
+            {% endif %}                  
+            
+            
+          </div>
+          <div class="widget-user-image">
+            {% if book.photo_author %}
+            <img style="width:100px; height: 100px;" class="img-circle elevation-2" src="{{book.photo_author.url}}" alt="User Avatar">
+
+            {% endif %}
+          </div>
+        <div class="book-info">
+            <h1>{{ book.title }}</h1>
+            <h2>by {{ book.author }}</h2>
+            <p><strong>Category:</strong> {{ book.category }}</p>
+            <p><strong>Price:</strong> ${{ book.price }}</p>
+            <p><strong>Published Date:</strong> {{ book.publish }}</p>
+            <p><strong>Rental Price (per day):</strong> ${{ book.rental_price_day }}</p>
+            <p><strong>Status:</strong> {{ book.status }}</p>
+            <p><strong>Total Rentals:</strong> {{ book.total_rental }}</p>
+            <p><strong>body:</strong> {{ book.body }}</p>
+        </div>
+    </div>
+</div>
+</div>
+</body>
+</html>
+
+
+{% endblock co %}

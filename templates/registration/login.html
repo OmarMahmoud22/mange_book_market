@@ -1,0 +1,25 @@
+
+{% block content %}
+{% if form.errors %}
+
+<p>
+    your username and password did no match
+    try again
+</p>
+{% else %}
+<p>plese enter you username password </p>
+{% endif %}
+
+<div>
+    <form action="{% url 'login' %}" method='post'>
+        {{ form.as_p }}
+        {% csrf_token %}
+        <input type="hidden"  name="next" value="{{ next }}">
+        <p>
+            <input type="submit" value="Login">
+        </p>
+    </form>
+    <p><a href="{% url "password_reset" %}">forget password</a></p>
+    <p><a href="{% url "password_change" %}">change password</a></p>
+</div>
+{% endblock content %}
